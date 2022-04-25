@@ -2,7 +2,7 @@ import throttle from "lodash.throttle";
 
 //=====================================//
 
-const data = localStorage.getItem("feedback-form-state");
+
 
 const form = document.querySelector(".feedback-form");
 
@@ -16,7 +16,7 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     console.log(items)
     form.reset()
-    localStorage.clear()
+    localStorage.removeItem("feedback-form-state")
 });
 
 const items = {
@@ -30,9 +30,11 @@ const containItems = function () {
 };
 
 
+const data = JSON.parse(localStorage.getItem("feedback-form-state"));
+
 if (data) {   
-    form[0].value = JSON.parse(data).email
-    form[1].value = JSON.parse(data).textArea
+    form[0].value = data.email
+    form[1].value = data.textArea
 }
 
 

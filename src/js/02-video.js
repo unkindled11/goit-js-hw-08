@@ -14,8 +14,6 @@ videoPlayer.on('timeupdate', throttle((time) => {
 }, 1000));
 
 
-if (localStorage.getItem("videoplayer-current-time")) {
+videoPlayer.setCurrentTime(localStorage.getItem("videoplayer-current-time"));
 
-    videoPlayer.setCurrentTime(localStorage.getItem("videoplayer-current-time"))
 
-};
